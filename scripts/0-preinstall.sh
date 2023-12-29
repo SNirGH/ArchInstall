@@ -6,7 +6,7 @@ DISK="/dev/sda"
 mkfs.fat -F32 ${DISK}1
 mkswap ${DISK}2
 swapon ${DISK}2
-mkfs.btrfs ${DISK}3
+mkfs.btrfs -f ${DISK}3
 
 mount ${DISK}3 /mnt
 btrfs su cr /mnt/@
