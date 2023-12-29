@@ -25,7 +25,7 @@ pacman -Sy --noconfirm
 
 # Mirrorlist
 reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-cp /etc/pacman./mirrorlist /etc/pacman.d/mirrorlist.backup
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 
 # Install base system
 pacstrap -i /mnt base base-devel linux-zen linux-firmware intel-ucode nano bash-completion linux-zen-headers networkmanager
