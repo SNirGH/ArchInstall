@@ -31,3 +31,4 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 pacstrap -i /mnt base base-devel linux-zen linux-firmware intel-ucode nano bash-completion linux-zen-headers networkmanager
 genfstab -U /mnt >>/mnt/etc/fstab
 arch-chroot /mnt
+(bash $SCRIPT_DIR/scripts/1-configuration.sh) |& tee 1-configuration.log
