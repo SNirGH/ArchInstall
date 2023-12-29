@@ -2,15 +2,7 @@
 
 DISK="/dev/sda"
 
-# Partition the disks
-# Partition 1: 1024MiB EFI
-# Partition 2: 8GiB Swap
-# Partition 3: Remaining Storage Root
-
-parted -m optimal $DISK mklabel gpt mkpart primary fat32 1MiB 1025MiB set 1 esp on
-parted -m optimal $DISK mkpart primary linux-swap 1025MiB 10.025GiB
-parted -m optimal $DISK mkpart primary 10.025GiB 100%
-
+# Setup Partitions
 mkfs.fat -F32 ${DISK}1
 mkswap ${DISK}2
 swapon ${DISK}2
