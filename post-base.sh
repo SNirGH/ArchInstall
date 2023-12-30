@@ -47,5 +47,12 @@ initrd /booster-linux-zen.img
 EOT
 echo "options root=UUID=$(blid -s UUID -o value /dev/sda3) rootflags=subvol=@ rw" >>/boot/loader/entries/booster.conf
 
+cat <<EOT >>/etc/booster.yaml
+compress: zstd
+modules: btrfs
+EOT
+
 systemctl enable NetworkManager.service
 systemctl enable sddm.service
+
+exit
