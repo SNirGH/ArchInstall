@@ -25,7 +25,7 @@ pacman -Sy
 echo "Finished Enabling"
 
 # Setting Root and User Password
-passw
+passwd
 useradd -m -g users -G wheel,storage,power -s /bin/bash zero
 passwd zero
 
@@ -45,7 +45,7 @@ linux /vmlinuz-linux-zen
 initrd /intel-ucode.img
 initrd /booster-linux-zen.img
 EOT
-echo "options root=UUID=$(blid -s UUID -o value /dev/sda3) rootflags=subvol=@ rw" >>/boot/loader/entries/booster.conf
+echo "options root=UUID=$(blkid -s UUID -o value /dev/sda3) rootflags=subvol=@ rw" >>/boot/loader/entries/booster.conf
 
 cat <<EOT >>/etc/booster.yaml
 compress: zstd
