@@ -5,8 +5,8 @@ echo "Formatting Partitions"
 sgdisk -Z /dev/sda
 sgdisk -a 2048 -o /dev/sda
 sgdisk -n 1::+1024M --typecode=1:ef00 --change-name=1:'boot' /dev/sda
-sgdisk -n 2::+8G --typecode=2:8200 --change-name=1:'swap' /dev/sda
-sgdisk -n 3::-0 --typecode=3:8300 --change-name=2:'root' /dev/sda
+sgdisk -n 2::+8G --typecode=2:8200 --change-name=2:'swap' /dev/sda
+sgdisk -n 3::-0 --typecode=3:8300 --change-name=3:'root' /dev/sda
 partprobe /dev/sda
 mkfs.fat -F32 /dev/sda1
 mkswap /dev/sda2
