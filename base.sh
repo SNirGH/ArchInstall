@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Format partitions
 echo "Formatting Partitions"
@@ -11,7 +11,7 @@ partprobe /dev/sda
 mkfs.fat -F32 /dev/sda1
 mkswap /dev/sda2
 swapon /dev/sda2
-mkfs.btrfs /dev/sda3
+mkfs.btrfs -f /dev/sda3
 echo "Completed Formatting"
 
 # Mounting Partitions
