@@ -24,12 +24,15 @@ pacman -Sy
 echo "Finished Enabling"
 
 # Setting Root and User Password
+echo "Enter Root Password:"
 passwd
 useradd -m -g users -G wheel,storage,power -s /bin/bash zero
+echo "Created User"
+echo "Enter User Password"
 passwd zero
 
 # Wheel group and using root password as default
-sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL(ALL:ALL) ALL/' /etc/sudoers
+sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 echo "Defaults rootpw" >>/etc/sudoers
 
 # Mounting EFI
@@ -54,5 +57,7 @@ EOT
 
 systemctl enable NetworkManager.service
 systemctl enable sddm.service
+
+sed -i '/Current=/ s/&/breeze/' /usr/lib/sddm/sddm.conf.d/default.conf
 
 exit
