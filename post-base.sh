@@ -18,9 +18,8 @@ echo "Finished Setting Hostname"
 
 # Enabling multilib
 echo "Enabling Multilib and ParallelDownloads"
-sed -i "s/Color/,/ParallelDownloads"'s/^#//' /etc/pacman.conf
-sed -i '/ParallelDownloads/a ILoveCandy'
-sed -i "s/\[multilib\],/Include/"'s/^#//' /etc/pacman.conf
+sed -i 's/^#Color/Color/;s/^#ParallelDownloads/ParallelDownloads/;/ParallelDownloads/a ILoveCandy' /etc/pacman.conf
+sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Sy
 echo "Finished Enabling"
 
@@ -30,7 +29,7 @@ useradd -m -g users -G wheel,storage,power -s /bin/bash zero
 passwd zero
 
 # Wheel group and using root password as default
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL(ALL) ALL/' /etc/sudoers
+sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL(ALL:ALL) ALL/' /etc/sudoers
 echo "Defaults rootpw" >>/etc/sudoers
 
 # Mounting EFI
