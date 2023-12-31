@@ -51,6 +51,7 @@ cat <<EOT >>/etc/booster.yaml
 compress: zstd
 modules: btrfs
 EOT
+/usr/lib/booster/regenerate_images
 
 systemctl enable NetworkManager.service
 systemctl enable sddm.service
