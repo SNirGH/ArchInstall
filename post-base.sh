@@ -58,6 +58,6 @@ EOT
 systemctl enable NetworkManager.service
 systemctl enable sddm.service
 
-sed -i '/Current=/ s/&/breeze/' /usr/lib/sddm/sddm.conf.d/default.conf
+sed -i '/Current=/ s/$/breeze/' /usr/lib/sddm/sddm.conf.d/default.conf
 
 exit
