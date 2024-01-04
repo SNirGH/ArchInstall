@@ -37,7 +37,7 @@ echo "Finished Ranking Mirrors"
 
 # Pacstrap
 echo "Starting Pacstrap"
-pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware intel-ucode nano bash-completion networkmanager firefox neovim plasma plasma-wayland-session sddm xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm kitty okular dolphin gwenview btop fish starship kate git curl wget
+pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware intel-ucode nano bash-completion networkmanager firefox neovim plasma plasma-wayland-session sddm xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm kitty okular dolphin gwenview btop fish starship kate git curl wget nushell rustup steam 
 echo "Finished Pacstrap"
 
 # Genfstab
