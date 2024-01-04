@@ -39,8 +39,11 @@ echo "Defaults rootpw" >>/etc/sudoers
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars
 
 # Bootloader install
+echo "Installing Bootloader"
 bootctl install
+echo "Finished Installing Bootloader"
 
+echo "Setting Up Bootloader Entry"
 cat <<EOT >>/boot/loader/entries/booster.conf
 title Arch Linux
 linux /vmlinuz-linux-zen
@@ -48,13 +51,17 @@ initrd /intel-ucode.img
 initrd /booster-linux-zen.img
 EOT
 echo "options root=UUID=$(blkid -s UUID -o value /dev/sda3) rootflags=subvol=@ rw" >>/boot/loader/entries/booster.conf
+echo "Finished Setting Up Bootloader Entry"
 
+echo "Setting up Booster"
 cat <<EOT >>/etc/booster.yaml
 compress: zstd
 modules: btrfs
 EOT
 /usr/lib/booster/regenerate_images
+echo "Finished Setting up Booster"
 
+echo "Enabling NetworkManager and SDDM"
 systemctl enable NetworkManager.service
 systemctl enable sddm.service
 
